@@ -1,0 +1,11 @@
+body {
+    text-align: center;
+    font-family: 'Cherry Cream Soda', cursive;
+    font-size: 65px;
+    margin: 50px;
+}
+
+#burger_pic {
+    display: block;
+    margin: auto;
+}

@@ -22,7 +22,7 @@ router.post("/burgers", function (req, res) {
     ], function (res) {
         // Send back the ID of the new quote
         res.json({
-            id: result.insertId
+            id: res.insertId
         });
     });
 });
