@@ -1,15 +1,5 @@
 var orm = require("../config/orm.js");
 
-// //Find all burgers
-
-// orm.selectAll("*", "burgers");
-
-// //Update a burger
-// orm.updateOne("burger_name", "burgers", "devoured", valueSet );
-
-// // Add a burger
-// orm.insertOne("burgers", vals);
-
 var burger = {
     all: function(cb) {
       orm.selectAll("*", "burgers", function(res) {
@@ -27,11 +17,6 @@ var burger = {
         cb(res);
       });
     },
-    // delete: function(condition, cb) {
-    //   orm.delete("burgers", condition, function(res) {
-    //     cb(res);
-    //   });
-    // }
   };
 
 module.exports = burger;
