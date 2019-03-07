@@ -1,36 +1,82 @@
 var connection = require("./connection.js");
 
+// Helper function for generating MySQL syntax
+function printQuestionMarks(num) {
+	var arr = [];
+
+	for (var i = 0; i < num; i++) {
+		arr.push("?");
+	}
+
+	return arr.toString();
+}
+
+// Helper function for generating My SQL syntax
+function objToSql(ob) {
+	var arr = [];
+
+	for (var key in ob) {
+		arr.push(key + "=" + ob[key]);
+	}
+
+	return arr.toString();
+}
+
 var orm = {
-  selectAll: function (whatToSelect, tableInput, cb) { // * burgers
-    var queryString = "SELECT ?? FROM ??";
-    connection.query(queryString, [whatToSelect, tableInput], function (err, result) {
-      if (err) {
-        throw err;
-      }
-      cb(result);
-    });
-  },
+  selectAll: function(tableInput, cb) {
+		// Construct the query string that returns all rows from the target table
+		var queryString = "SELECT * FROM " + tableInput + ";";
+
+		// Perform the database query
+		connection.query(queryString, function(err, result) {
+			if (err) {
+				throw err;
+			}
+
+			// Return results in callback
+			cb(result);
+		});
+	},
+  // selectAll: function (whatToSelect, tableInput, cb) { // * burgers
+  //   var queryString = "SELECT * FROM ??";
+  //   connection.query(queryString, [whatToSelect, tableInput], function (err, result) {
+  //     if (err) {
+  //       throw err;
+  //     }
+  //     cb(result);
+  //   });
+  // },
   insertOne: function (tableInput, cols, vals, cb) { //burgers values <burger_name> <devoured>
-    var queryString = "INSERT INTO ?? SET ?";
+    // var queryString = "INSERT INTO ?? SET ?? WHERE ??";
+    		// Construct the query string that inserts a single row into the target table
+		var queryString = "INSERT INTO " + tableInput;
+
+		queryString += " (";
+		queryString += cols.toString();
+		queryString += ") ";
+		queryString += "VALUES (";
+		queryString += printQuestionMarks(vals.length);
+		queryString += ") ";
 
     console.log(queryString);
 
-    connection.query(queryString, [tableInput, cols, vals], function (
-      err,
-      result
-    ) {
+    var query = connection.query(queryString, vals, function (err, result) 
+    {
       if (err) {
         throw err;
       }
       cb(result);
     });
-  },
-  updateOne: function (tableInput, objColVals, condition, cb) { // * burgers burger_name string
-    var queryString = "UPDATE ?? SET ?? WHERE ??";
+  },       
+  updateOne: function (tableInput, objColVals, condition, cb) {
+    var queryString = "UPDATE " + tableInput;
 
-    console.log(queryString);
+		queryString += " SET ";
+		queryString += objToSql(objColVals);
+		queryString += " WHERE ";
+		queryString += condition;
 
-    connection.query(queryString, [whatToSelect, tableInput, colToSearch, valOfCol], function (err, result) {
+    connection.query(queryString, function (err, result) {
       if (err) {
         throw err;
       }

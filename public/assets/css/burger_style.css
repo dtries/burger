@@ -1,3 +1,7 @@
+html {
+    background-color: cornflowerblue;
+}
+
 body {
     text-align: center;
     font-family: 'Cherry Cream Soda', cursive;
@@ -5,7 +9,7 @@ body {
     margin: 50px;
 }
 
-#burger_pic {
+/* #burger_pic {
     display: block;
     margin: auto;
-}
+} */

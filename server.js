@@ -2,6 +2,8 @@ require("dotenv").config();
 
 var express = require("express");
 
+var methodOverride = require("method-override");
+
 var PORT = process.env.PORT || 8080;
 
 var app = express();
@@ -13,6 +15,9 @@ app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+// Override with POST having ?_method=PUT
+app.use(methodOverride('_method'));
+
 // Set Handlebars.
 var exphbs = require("express-handlebars");
 
@@ -22,7 +27,7 @@ app.set("view engine", "handlebars");
 // Import routes and give the server access to them.
 var routes = require("./controllers/burgers_controller.js");
 
-app.use(routes);
+app.use("/", routes);
 
 // Start our server so that it can begin listening to client requests.
 app.listen(PORT, function() {
