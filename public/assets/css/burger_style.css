@@ -1,15 +1,71 @@
 html {
-    background-color: cornflowerblue;
+    background-image: url("../img/three_burgers.jpeg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
 }
 
-body {
+.container {
+
     text-align: center;
     font-family: 'Cherry Cream Soda', cursive;
-    font-size: 65px;
-    margin: 50px;
+    color: #06ACDD;    
+    text-shadow:     -2px -2px 0 #5C021A,
+    1px -1px 0 #5C021A,
+    -1px 1px 0 #5C021A,
+    1px 1px 0 #5C021A;
+    background-image: url("../img/burger_redtray.jpeg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: black;
 }
 
-/* #burger_pic {
-    display: block;
-    margin: auto;
-} */
+#title_row {
+    margin: 10%;
+}
+
+.bottom_row {
+    padding-bottom: 1%;
+}
+
+.burgerToEat,
+.burgerGone {
+    background-color: #00000000;
+    font-family: 'Cherry Cream Soda', cursive;
+    color: #06ACDD;
+    text-shadow:     -2px -2px 0 #5C021A,
+    1px -1px 0 #5C021A,
+    -1px 1px 0 #5C021A,
+    1px 1px 0 #5C021A;
+    font-size: 125%;
+    font-weight: bold;
+    border: 0px;
+
+}
+
+#name,
+.addBurger {
+    background-color: #5C021A50;
+    text-align: center;
+    font-family: 'Cherry Cream Soda', cursive;
+    color: #06ACDD;
+    text-shadow:     -2px -2px 0 #5C021A,
+    1px -1px 0 #5C021A,
+    -1px 1px 0 #5C021A,
+    1px 1px 0 #5C021A;
+    font-size: 125%;
+    border: #06ACDD 2px solid;
+
+}
+
+.addBurger {
+     font-size: 150%;
+     font-weight: bold;
+}
+
+.theBottom {
+    padding-bottom: 5%;
+    padding-left: 2%;
+    padding-right: 2%;
+}
