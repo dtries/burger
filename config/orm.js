@@ -37,17 +37,8 @@ var orm = {
 			cb(result);
 		});
 	},
-  // selectAll: function (whatToSelect, tableInput, cb) { // * burgers
-  //   var queryString = "SELECT * FROM ??";
-  //   connection.query(queryString, [whatToSelect, tableInput], function (err, result) {
-  //     if (err) {
-  //       throw err;
-  //     }
-  //     cb(result);
-  //   });
-  // },
+
   insertOne: function (tableInput, cols, vals, cb) { //burgers values <burger_name> <devoured>
-    // var queryString = "INSERT INTO ?? SET ?? WHERE ??";
     		// Construct the query string that inserts a single row into the target table
 		var queryString = "INSERT INTO " + tableInput;
 
